@@ -13,6 +13,7 @@ def binary_search(list, item):
             low = mid + 1
     return None
 
+# Array 1
 # brute force, O(n^2) time complexity
 def twoSum(nums, target):
     n = len(nums)
@@ -35,5 +36,20 @@ def twoSum(nums, target):
         complement = target - nums[i]
         if complement in numMap and numMap[complement] != i:
             return [i, numMap[complement]]
-
     return []
+
+# one pass hash table O(n)
+def twoSum(nums, target):
+    numMap = {}
+    n = len(nums)
+
+    for i in range(n):
+        complement = target - nums[i]
+        if complement in numMap:
+            return [numMap[complement], i]
+        numMap[nums[i]] = i
+    return []
+
+
+# Array 2
+# best time to buy and sell stock
