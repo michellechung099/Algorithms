@@ -1,3 +1,5 @@
+from typing import List
+
 def binary_search(list, item):
     low = 0
     high = len(list) - 1
@@ -65,3 +67,14 @@ def maxProfit(prices):
             left = right
         right += 1
     return maxP
+
+# Array 3
+# contains duplicate
+def containsDuplicate(nums: List[int]) -> bool:
+    seen = {}
+
+    for num in nums:
+        if num in seen and seen[num] >= 1:
+            return True
+        seen[num] = seen.get(num, 0) + 1
+    return False
