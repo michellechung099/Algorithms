@@ -81,11 +81,13 @@ def containsDuplicate(nums: List[int]) -> bool:
 
 # Array 4
 # product of array except self O(n)
-# def productExceptSelf(nums: List[int]) -> List[int]:
+def productExceptSelf(nums: List[int]) -> List[int]:
 
 
 # Array 5
 # maximum subarray
+def maxSubArray(nums: List[int]) -> int:
+
 
 # Array 6
 # maximum product subarray
@@ -130,13 +132,13 @@ def isPalindrome(s: str) -> bool:
             l += 1
         while r > l and not alphaNum(s[r]):
             r -= 1
-        if s[l].lower() != r[l].lower()
+        if s[l].lower() != s[r].lower():
             return False
         l, r = l + 1, r - 1
     return True
 
 # helper function to determine if the element is alphanum based on ASCII contiguous position
 def alphaNum(c):
-    return (ord('A') <= c <= ord('Z') or
-            ord('a') <= c <= ord('z') or
-            ord('0') <= c <= ord('9'))
+    return (ord('A') <= ord(c) <= ord('Z') or
+            ord('a') <= ord(c) <= ord('z') or
+            ord('0') <= ord(c) <= ord('9'))
