@@ -82,12 +82,54 @@ def containsDuplicate(nums: List[int]) -> bool:
 # Array 4
 # product of array except self O(n)
 def productExceptSelf(nums: List[int]) -> List[int]:
+    answer = [1] * len(nums)
 
+    prefix = 1
+    for i in range(len(nums)):
+        answer[i] = prefix
+        prefix *= nums[i]
+    postfix = 1
+    for i in range(len(nums)-1, -1, -1):
+        answer[i] *= postfix
+        postfix *= nums[i]
+    return answer
 
 # Array 5
 # maximum subarray
+# brute force way O(n^2)
 def maxSubArray(nums: List[int]) -> int:
+    maxSum = nums[0]
 
+    for i in range(len(nums)):
+        curSum = 0
+        for j in range(i, len(nums)):
+            curSum += nums[j]
+            maxSum = max(maxSum, curSum)
+    return maxSum
+
+# kadane's algorithm O(n)
+def maxSubArray(nums: List[int]) -> int:
+    if not nums:
+        return 0
+
+    max_current = nums[0]
+    max_global = nums[0]
+
+    for i in range(1, len(nums)):
+        max_current = max(nums[i], max_current + nums[i])
+        max_global = max(max_global, max_current)
+    return max_global
+
+# kadane's algorithm O(n) diff solution
+def maxSubArray(nums: List[int]) -> int:
+    maxSum = nums[0]
+    curSum = 0
+
+    for n in nums:
+        curSum = max(curSum, 0)
+        curSum += n
+        maxSum = max(maxSum, curSum)
+    return maxSum
 
 # Array 6
 # maximum product subarray
